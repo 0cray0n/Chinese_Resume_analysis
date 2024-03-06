@@ -1,0 +1,46 @@
+{
+    "name": "张孟涵",
+    "bir": "1997.2.12",
+    "gend": "女",
+    "tel": "13999999999",
+    "acad": "本科",
+    "nati": "南京",
+    "live": "北京",
+    "poli": "",
+    "unv": "东南大学",
+    "work_experience": [
+      {
+        "time": "2019.09-2021.07",
+        "org": "奈森设计有限公司",
+        "work_desc": "销售，制定Kellogg在中国的营销策略，开创代购事业，客户从200人扩大到600人。"
+      }
+    ],
+    "education": [
+      {
+        "time": "2015-2019",
+        "school": "东南大学",
+        "degree": "文学学士",
+        "edu_desc": "财务管理"
+      }
+    ],
+    "project_experience": [],
+    "training_experience": [],
+    "awards": [
+      {
+        "time": "2016",
+        "award": "优秀班干，优秀团干荣誉"
+      }
+    ],
+    "self_assessment": "性格阳光，乐于交友，热爱旅行，看书，视野开阔。认真负责，有较强的理性批判性思维，善于团队协作。",
+    "career_objective": "管理",
+    "skills": "英语雅思7分，CET-4, CET-6，会计从业资格证书，会计初级证书，国家计算机二级证书，掌握Offices, 摄影，视频制作技能",
+    "interests": "旅行，看书",
+    "certifications": "",
+    "language_skills": "",
+    "publications": "",
+    "philosophy": "",
+    "major_courses": "",
+    "self_introduction": "",
+    "other": "邮箱：2345768@qq.com"
+  }
+  

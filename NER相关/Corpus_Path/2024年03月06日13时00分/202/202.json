@@ -1,0 +1,40 @@
+{
+	"name": "郑雅仁",
+	"bir": "",
+	"gend": "",
+	"tel": "13912345678",
+	"acad": "中专",
+	"nati": "汉族",
+	"live": "上海",
+	"poli": "",
+	"unv": "上海市电视中等专业学校",
+	"work_experience": [{
+		"time": "2016.7–至今",
+		"org": "星优家居设计公司",
+		"work_desc": "负责企业画册设计、标志设计、产品包装设计、杂志广告跨页设计、户外广告。对公司的网站后台周期性的修改和维护。对公司所有的宣传广告全程负责一直到完成阶段。"
+	}, {
+		"time": "2015.7–2016.2",
+		"org": "翔瑞集团",
+		"work_desc": "负责企业画册设计、标志设计、产品包装设计、杂志广告跨页设计、户外广告。对公司的网站后台周期性的修改和维护。对公司所有的宣传广告全程负责一直到完成阶段。"
+	}],
+	"education": [{
+		"time": "2013-2016",
+		"school": "上海市电视中等专业学校",
+		"degree": "中专",
+		"edu_desc": "设计专业"
+	}],
+	"project_experience": [],
+	"training_experience": [],
+	"awards": [],
+	"self_assessment": "思维灵活，大方稳重，责任心强，有较强团队精神。",
+	"career_objective": "设计师",
+	"skills": "Adobe中国认证设计师, Adobe认证产品专家, 平面设计师资格证书, 英语四六级证书, MS Office, Photoshop, Illustrator, 英语, 日语, 粤语",
+	"interests": "",
+	"certifications": "Adobe中国认证设计师, Adobe认证产品专家, 平面设计师资格证书, 英语四六级证书",
+	"language_skills": "英语, 日语, 粤语",
+	"publications": "",
+	"philosophy": "",
+	"major_courses": "",
+	"self_introduction": "",
+	"other": "联系方式: xianxian@taobao.com"
+}

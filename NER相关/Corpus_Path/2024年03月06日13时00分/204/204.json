@@ -1,0 +1,51 @@
+{
+    "name": "林芳江",
+    "bir": "",
+    "age": "26岁",
+    "gend": "",
+    "tel": "13999999999",
+    "acad": "中专",
+    "nati": "汉族",
+    "live": "上海",
+    "poli": "",
+    "unv": "",
+    "work_experience": [
+        {
+            "time": "2017.09-2019.9",
+            "org": "康纳科技有限公司",
+            "work_desc": "负责企业画册设计、标志设计、产品包装设计、杂志广告跨页设计、户外广告设计等。对公司的网站后台周期性的修改和维护。对公司所有的宣传广告全程负责一直到完成阶段。"
+        },
+        {
+            "time": "2019.9-2021.9",
+            "org": "万科物业服务有限公司",
+            "work_desc": "负责企业画册设计、标志设计、产品包装设计、杂志广告跨页设计、户外广告设计等。对公司的网站后台周期性的修改和维护。对公司所有的宣传广告全程负责一直到完成阶段。"
+        },
+        {
+            "time": "2021.9-至今",
+            "org": "汉服设计公司",
+            "work_desc": "负责企业画册设计、标志设计、产品包装设计、杂志广告跨页设计、户外广告设计等。对公司的网站后台周期性的修改和维护。对公司所有的宣传广告全程负责一直到完成阶段。"
+        }
+    ],
+    "education": [
+        {
+            "time": "2014–2017",
+            "school": "杨浦区财贸职工中专",
+            "degree": "中专",
+            "edu_desc": "设计专业"
+        }
+    ],
+    "project_experience": [],
+    "training_experience": [],
+    "awards": [],
+    "self_assessment": "",
+    "career_objective": "",
+    "skills": "Microsoft Word 95%, Microsoft PowerPoint 50%, Photoshop 95%, 英语能力 95%, 日语能力 95%",
+    "interests": "",
+    "certifications": "Adobe中国认证设计师, Adobe认证产品专家, 平面设计师资格证书, 国际商业美术设计师, 英语六级证书",
+    "language_skills": "英语, 日语",
+    "publications": "",
+    "philosophy": "",
+    "major_courses": "",
+    "self_introduction": "",
+    "other": "邮箱: 1234567@123.com"
+}

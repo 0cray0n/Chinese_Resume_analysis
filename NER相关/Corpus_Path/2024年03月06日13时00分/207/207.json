@@ -1,0 +1,56 @@
+{
+    "name": "王培伦",
+    "bir": "",
+    "age": "30岁",
+    "gend": "",
+    "tel": "13912345678",
+    "acad": "中专",
+    "nati": "汉族",
+    "live": "河南",
+    "poli": "",
+    "unv": "",
+    "work_experience": [
+        {
+            "time": "2021.7–至今",
+            "org": "高雅设计服务有限公司",
+            "role": "平面设计师"
+        },
+        {
+            "time": "2019.7–2021.7",
+            "org": "承峻设计服务有限公司",
+            "role": "平面设计师"
+        },
+        {
+            "time": "2014.7–2019.7",
+            "org": "子鸿设计服务有限公司",
+            "role": "平面设计师"
+        },
+        {
+            "time": "2013.7–2014.7",
+            "org": "斯德设计服务有限公司",
+            "role": "平面设计师"
+        }
+    ],
+    "education": [
+        {
+            "time": "2010.9–2013.6",
+            "school": "河南创新科技中专",
+            "degree": "中专",
+            "edu_desc": "设计专业"
+        }
+    ],
+    "project_experience": [],
+    "training_experience": [],
+    "awards": [],
+    "self_assessment": "思维灵活，大方稳重，责任心强，具有较强的团队精神。",
+    "career_objective": "设计师",
+    "skills": "Adobe中国认证设计师, Adobe认证产品专家, 平面设计师资格证书, Ms Office办公软件, Photoshop软件, 英语四六级证书",
+    "interests": "",
+    "certifications": "Adobe中国认证设计师, Adobe认证产品专家, 平面设计师资格证书, 英语四六级证书",
+    "language_skills": "",
+    "publications": "",
+    "philosophy": "",
+    "major_courses": "",
+    "self_introduction": "",
+    "other": "邮箱: Yourname@163.com"
+}
