@@ -301,15 +301,4 @@ class Selenium_Edge:
     def destory(self):
         self.driver.quit()
 
-class OpenCv_Util:
-    def __init__(self):
-        pass
-
-    @staticmethod
-    def mkdir(url):
-        if not os.path.exists(url):
-            os.mkdir(url)
-            print(f"{url}文件夹已创建")
-        else:
-            print(f"{url}文件夹已存在")
 

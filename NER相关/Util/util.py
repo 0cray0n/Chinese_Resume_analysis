@@ -1,22 +1,59 @@
+import sys
+sys.path.append('./Util')
 import os
 import json
-import shutil
 import re
-import logging
-from File_Util import get_json_info,get_log_config
+from File_Util import get_json_info, get_log_config, get_text_from_txt
 from pprint import pprint
-
 
 PDF_DIR = './PDF_DIR'
 PDF_TEST_DIR = './PDF_TEST'
 # 保存结果
 CORPUS_PATH = './Corpus_Path'
-key_mapping_path = '../Corpus_Path/key_mapping.json'
-
+# 缩写映射
+key_mapping_path = './Corpus_Path/key_mapping.json'
 key_mapping = get_json_info(key_mapping_path)
 
-# 给定标注好的json，将大段原始txt文本打标记
-def marking_tag(json_text,txt_text,key_mapping=key_mapping,log_info="101",is_idx=False):
+# 将以及打好标记的词语进行分析，将每个字进行标记头部和尾部
+def marking_character_tag(all_tag,text,dirpath):
+    '''
+    将以及打好标记的词语进行分析，将每个字进行标记头部和尾部
+    :param all_tag: 所有打好标记的词语
+    :param text: 原文本
+    :param filepath: 文件夹目录
+    :return:
+    '''
+    # 编码
+    # 初始化标注列表
+    tagged_text = ['O'] * len(text)
+
+    # 更新标注信息
+    for annotation in all_tag:
+        for value, info in annotation.items():
+            start, end, tag = info['start_index'], info['end_index'], info['tag']
+            tagged_text[start] = 'B-' + tag  # 标记开始
+            for i in range(start + 1, end + 1):
+                tagged_text[i] = 'I-' + tag  # 标记内部
+
+    # 生成最终的标注结果
+    final_annotations = [[text[i], tagged_text[i]] for i in range(len(text))]
+    # 打印结果
+    # for item in final_annotations:
+    #     print(f"{item[0]} {item[1]}")
+    # tag 代表没有标注第几次经历下标和标注类别名字
+    # tag_with_name 代表标注类别名字被标注
+    # tag_with_idx 代表标注第几次经历下标
+    # tag_wtih_idx_name 代表没有标注第几次经历下标和标注类别名字
+    filepath = os.path.join(dirpath,'tag.txt')
+    with open (filepath, 'w', encoding='utf-8') as f:
+        for item in final_annotations:
+            f.write(f"{item[0]} {item[1]}\n")
+    print(f"标记已写入{filepath}")
+    return final_annotations
+
+
+# 给定标注好的json，将大段原始txt文本分为每一个词打标记
+def marking_word_tag(json_text,txt_text,key_mapping=key_mapping,log_info="101",is_idx=False):
     """
     打标记
     :param json_text: 原始标注好的json文件
@@ -46,7 +83,7 @@ def marking_tag(json_text,txt_text,key_mapping=key_mapping,log_info="101",is_idx
                         # 不带idx的
                         new_key = key_mapping[key]+"_"+key_mapping[sub_key]
                     split_tag_list = get_text_tag(sub_value,new_key,txt_text,log_info)
-                    pprint(split_tag_list)
+                    # pprint(split_tag_list)
                     # print(index,item)
                     for split_tag in split_tag_list:
                         all_tag_list.append(split_tag)
@@ -143,10 +180,8 @@ def get_index_by_automaton(segments, tag, txt_text):
     return all_split_text
 
 
-
-
-
-
+if __name__ == "__main__":
+    pass
 
 
 

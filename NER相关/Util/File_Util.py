@@ -1,3 +1,4 @@
+import sys
 from datetime import datetime
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
@@ -7,9 +8,12 @@ import json
 from io import StringIO
 from dateutil import parser
 import os
-# from util import get_log_config
 import logging
 
+PDF_DIR = './PDF_DIR'
+PDF_TEST_DIR = './PDF_TEST'
+# 保存结果
+CORPUS_PATH = './Corpus_Path'
 
 # 获取json文件信息
 def get_json_info(json_path):
@@ -20,11 +24,12 @@ def get_json_info(json_path):
     '''
     logging = get_log_config()
     if os.path.exists(json_path):
-        print(f"json文件已存在{json_path}")
         with open(json_path, 'r', encoding='utf-8') as f:
             ner_json = json.load(f)
+        print(f"从{json_path}读取成功")
     else:
-        print(f"json文件不存在{json_path}")
+        ner_json = ""
+        # print(f"json文件不存在{json_path}")
         logging.error(f"json文件不存在{json_path}")
     return ner_json
 
@@ -221,4 +226,11 @@ def get_log_config(log_path='./Corpus_Path/Log'):
 
     return logger
 
+# 强制创建文件夹
+def mkdir(url):
+    if not os.path.exists(url):
+        os.mkdir(url)
+        print(f"{url}文件夹已创建")
+    else:
+        print(f"{url}文件夹已存在")
 
