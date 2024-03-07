@@ -57,7 +57,7 @@ d I-EM
 . I-EM
 m I-EM
 e L-EM
-教 B-ED_TA
+教 O
 育 O
 背 O
 景 O

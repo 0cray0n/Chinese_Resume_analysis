@@ -72,3 +72,47 @@ def tagging2txt(pdf_dir='PDF_DIR', tag_file_path='Corpus_Path/Chinese_key_mappin
                     txt_file.write(content[i] + ' ' + con_to_tag[i] + '\n')
                 txt_file.write('\n')  # 不同PDF文件的内容之间添加空行分隔
 tagging2txt()
+
+
+
+def marking_tag(json_text,txt_text,key_mapping=key_mapping,log_info="101",is_idx=False):
+    """
+    打标记
+    :param json_text: 原始标注好的json文件
+    :param txt_text: 原始文本
+    :param key_mapping: 简写映射
+    :param log_info: 日志文本
+    :return:
+    """
+    import re
+    from Util.util import get_index_by_automaton,get_log_config,get_text_index
+    from pprint import pprint
+    log_config = get_log_config()
+    all_tag_list = []
+    # 遍历一级结构字典
+    # pprint(json_text)
+    for key, value in json_text.items():
+        if isinstance(value, str):  # 如果字段值是字符串，则直接添加
+            new_key = key_mapping[key]
+            for split_tag in get_text_index(value,new_key,txt_text,log_info):
+                all_tag_list.append(split_tag)
+        elif isinstance(value, list):
+            # 遍历二级结构列表
+            for (index,item) in enumerate(value):
+                # 遍历字典
+                for sub_key, sub_value in item.items():
+                    if is_idx:
+                        # 带idx的
+                        new_key = key_mapping[key]+"_"+key_mapping[sub_key]+"_"+str(index)
+                    else:
+                        # 不带idx的
+                        new_key = key_mapping[key]+"_"+key_mapping[sub_key]
+                    split_tag_list = get_text_index(sub_value,new_key,txt_text,log_info)
+                    pprint(split_tag_list)
+                    # print(index,item)
+                    for split_tag in split_tag_list:
+                        all_tag_list.append(split_tag)
+    return all_tag_list
+all_tag = marking_tag(ner_json,text)
+from pprint import pprint
+pprint(all_tag)
