@@ -1,0 +1,65 @@
+{
+    "name": "黄盛玫",
+    "career_objective": "JAVA开发",
+    "education": {
+      "degree": "硕士",
+      "major": "计算机专业",
+      "school": "中山大学",
+      "time": "2020"
+    },
+    "age": "30岁",
+    "live": "上海",
+    "tel": "18833445566",
+    "email": "Huangsm.com",
+    "skills": [
+      "Java",
+      "Jsp/Servlet",
+      "HTML",
+      "XML",
+      "JavaScript",
+      "jQuery",
+      "EasyUI",
+      "AJAX",
+      "JSON",
+      "Eclipse",
+      "MyEclipse",
+      "PL/SQL Developer",
+      "MYSQL 5.0",
+      "Dreamweaver 6.0",
+      "SVN",
+      "Tomcat 7",
+      "PowerDesign"
+    ],
+    "self_assessment": "JAVA基础扎实、有责任心、沟通和理解能力较强。毕业进入社会工作已经两年，通过这些学到了很多，成长了很多，收获了很多经验。",
+    "work_experience": [
+      {
+        "org": "软通信息科技有限公司",
+        "role": "JAVA开发工程师",
+        "time": "2021.09-至今",
+        "work_desc": [
+          "负责模拟退火算法MATLAB平台的改进，提升精确度达99%",
+          "发表专利1篇：一种基于多相位模拟退火算法的任意模式精确转换方法",
+          "压缩感知算法的研究及应用"
+        ]
+      },
+      {
+        "org": "京东网博客园",
+        "role": "JAVA开发工程师",
+        "time": "2020.09-2021.09",
+        "work_desc": [
+          "实现多说评论功能和访客流量统计",
+          "实现站内搜索，可自由查找站内内容",
+          "添加SITEMAP，实现GOOGLE和百度SEO优化"
+        ]
+      }
+    ],
+    "project_experience": [
+      {
+        "project": "京东商城后台系统开发",
+        "time": "2020.09-2021.03",
+        "project_desc": "这是一个网上购物商城，专卖各种小吃零食。项目功能目标制定和搭建项目框架，商品搜索功能(采用LUCENCE4.0实现)，负责各组员的任务分配和成果验收。本次项目开发锻炼我的团队管理能力；明白了制定功能目标和任务分配要结合实际，需要考虑各组员的能力，只有所有组员一起努力才能更好地完成任务。"
+      }      
+
+    ]
+  }
+  
