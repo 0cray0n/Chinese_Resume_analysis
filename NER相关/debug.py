@@ -1,34 +1,54 @@
 import sys
 # sys.path.append('./Util')
-from Util.util import marking_word_tag,marking_character_tag
-from Util.File_Util import get_text_from_txt,get_json_info
+from Util.util import marking_character_tag,marking_word_tag
+from Util.File_Util import get_text_from_txt,test_ner_json,test_tag_text,get_abbr_mapping,get_abbr_mapping
+from Util.Encode_Util import encode_word,decode_word
+from Util.File_Util import update_json_reverse,abbrtag_to_index_json_path,index_to_abbrtag_json_path
 from pprint import pprint
 import os
 
 if __name__ == '__main__':
-    work_path = './Corpus_Path/2024年03月03日15时01分'
-    index = 0
-    for filename in os.listdir(work_path):
-        # print(filename)
-        major_path = os.path.join(work_path, filename)
-        pdf_path = os.path.join(major_path, filename) + ".pdf"
-        txt_path = os.path.join(major_path, filename) + ".txt"
-        json_path = os.path.join(major_path, filename) + ".json"
-        # print(file_pdf)
-        if not os.path.exists(pdf_path):
-            print("pdf不存在")
-            continue
-        text = get_text_from_txt(txt_path, pdf_path)
-        ner_json = get_json_info(json_path)
-        # 获取词标注
-        all_tag = marking_word_tag(ner_json, text, log_info=filename)
-        pprint(all_tag)
-        char_tag = marking_character_tag(all_tag,text,major_path)
-        # 标注好的json文件
-        index = index + 1
+    # abbr_json,tag_len = get_abbr_mapping()
+    text = get_text_from_txt('./Corpus_Path/2024年03月03日15时01分/101/101.txt')
+    print(test_tag_text)
+    # abbr_json = get_abbr_mapping()
+    # print(abbr_json)
+    # update_json_reverse(abbrtag_to_index_json_path,abbr_json,True,index_to_abbrtag_json_path)
+    machine_index = encode_word(test_tag_text)
+    pprint(machine_index)
+    # text_tag_list = marking_character_tag(test_tag_text,text)
+    # print(text_tag_list)
+    # tag_to_idx = encode_word(text)
+    # print(tag_to_idx)
+    # idx_to_tag = decode_word(tag_to_idx)
+    # print(idx_to_tag)
+    # print(abbr_json)
+    # print(tag_len)
 
-        if index >= 1:
-            break
+# if __name__ == '__main__':
+#     work_path = './Corpus_Path/2024年03月03日15时01分'
+#     index = 0
+#     for filename in os.listdir(work_path):
+#         # print(filename)
+#         major_path = os.path.join(work_path, filename)
+#         pdf_path = os.path.join(major_path, filename) + ".pdf"
+#         txt_path = os.path.join(major_path, filename) + ".txt"
+#         json_path = os.path.join(major_path, filename) + ".json"
+#         # print(file_pdf)
+#         if not os.path.exists(pdf_path):
+#             print("pdf不存在")
+#             continue
+#         text = get_text_from_txt(txt_path, pdf_path)
+#         ner_json = get_json_info(json_path)
+#         # 获取词标注
+#         all_tag = marking_word_tag(ner_json, text, log_info=filename)
+#         pprint(all_tag)
+#         char_tag = marking_character_tag(all_tag,text,major_path)
+#         # 标注好的json文件
+#         index = index + 1
+#
+#         if index >= 1:
+#             break
 
 
 

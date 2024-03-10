@@ -3,22 +3,21 @@ sys.path.append('./Util')
 import os
 import json
 import re
-from File_Util import get_json_info, get_log_config, get_text_from_txt
+from File_Util import key_mapping,all_tag_json
+from config import Corpus_log_config
 from pprint import pprint
 
 PDF_DIR = './PDF_DIR'
 PDF_TEST_DIR = './PDF_TEST'
 # 保存结果
 CORPUS_PATH = './Corpus_Path'
-# 缩写映射
-key_mapping_path = './Corpus_Path/key_mapping.json'
-key_mapping = get_json_info(key_mapping_path)
+
 
 # 将以及打好标记的词语进行分析，将每个字进行标记头部和尾部
-def marking_character_tag(all_tag,text,dirpath):
+def marking_character_tag(all_tag,text,dirpath=""):
     '''
     将以及打好标记的词语进行分析，将每个字进行标记头部和尾部
-    :param all_tag: 所有打好标记的词语
+    :param all_tag: 通过marking_word_tag打好标记的词语,key为字符串,value为英文全称标记,单个元素为{"蔡于纬":"name"}
     :param text: 原文本
     :param filepath: 文件夹目录
     :return:
@@ -26,7 +25,7 @@ def marking_character_tag(all_tag,text,dirpath):
     # 编码
     # 初始化标注列表
     tagged_text = ['O'] * len(text)
-
+    print(all_tag)
     # 更新标注信息
     for annotation in all_tag:
         for value, info in annotation.items():
@@ -44,13 +43,13 @@ def marking_character_tag(all_tag,text,dirpath):
     # tag_with_name 代表标注类别名字被标注
     # tag_with_idx 代表标注第几次经历下标
     # tag_wtih_idx_name 代表没有标注第几次经历下标和标注类别名字
-    filepath = os.path.join(dirpath,'tag.txt')
-    with open (filepath, 'w', encoding='utf-8') as f:
-        for item in final_annotations:
-            f.write(f"{item[0]} {item[1]}\n")
-    print(f"标记已写入{filepath}")
+    if dirpath != "":
+        filepath = os.path.join(dirpath,'tag.txt')
+        with open (filepath, 'w', encoding='utf-8') as f:
+            for item in final_annotations:
+                f.write(f"{item[0]} {item[1]}\n")
+        print(f"标记已写入{filepath}")
     return final_annotations
-
 
 # 给定标注好的json，将大段原始txt文本分为每一个词打标记
 def marking_word_tag(json_text,txt_text,key_mapping=key_mapping,log_info="101",is_idx=False):
@@ -104,7 +103,6 @@ def get_text_tag(search_string, tag, txt_text, log_info):
         "tag": tag,
     }
     """
-    log_config = get_log_config()
     # 变量初始化
     automaton_info = []
     # 若找得到文本
@@ -118,7 +116,7 @@ def get_text_tag(search_string, tag, txt_text, log_info):
                 "tag": tag,
             }
         }]
-        log_config.info(f"{log_info}文件 {search_string} 标注为 {tag}")
+        Corpus_log_config.info(f"{log_info}文件 {search_string} 标注为 {tag}")
         # print(automaton_info)
     # 找不到文本
     else:
@@ -127,8 +125,8 @@ def get_text_tag(search_string, tag, txt_text, log_info):
         segments = re.split(pattern, search_string)
         segments.pop()
         # print(segments)
-        log_config.warning(f"{log_info}文件 {search_string} 标注为 :")
-        log_config.error(f"{log_info}文件 {search_string} 未标注为 :")
+        Corpus_log_config.warning(f"{log_info}文件 {search_string} 标注为 :")
+        Corpus_log_config.error(f"{log_info}文件 {search_string} 未标注为 :")
         automaton_info = get_index_by_automaton(segments, tag, txt_text)
         # pprint(automaton_info)
     return automaton_info
@@ -148,7 +146,6 @@ def get_index_by_automaton(segments, tag, txt_text):
     }
     """
     import ahocorasick
-    log_config = get_log_config()
     # 创建 Aho-Corasick 自动机实例
     A = ahocorasick.Automaton()
     # 将列表中的每个文本项添加到自动机中作为模式
@@ -169,14 +166,14 @@ def get_index_by_automaton(segments, tag, txt_text):
             }
         }
         # print(split_text)
-        log_config.warning(f"分词:{split_text} 标注为 {tag}")
+        Corpus_log_config.warning(f"分词:{split_text} 标注为 {tag}")
         all_split_text.append(split_text)
         found_patterns.add(pattern)
     # 检查未找到的模式
     not_found_patterns = [pattern for pattern in segments if pattern not in found_patterns]
     # 处理未找到的模式
     for pattern in not_found_patterns:
-        log_config.error(f"分词:{pattern} 未标注为 {tag}")
+        Corpus_log_config.error(f"分词:{pattern} 未标注为 {tag}")
     return all_split_text
 
 

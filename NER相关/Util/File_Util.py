@@ -1,4 +1,6 @@
 import sys
+sys.path.append('./Util')
+from config import json_log_config
 from datetime import datetime
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
@@ -8,12 +10,24 @@ import json
 from io import StringIO
 from dateutil import parser
 import os
-import logging
 
 PDF_DIR = './PDF_DIR'
 PDF_TEST_DIR = './PDF_TEST'
 # 保存结果
 CORPUS_PATH = './Corpus_Path'
+# 所有标签
+all_tag_json_path = './Corpus_Path/all_tag.json'
+# 英文全称映射缩写
+key_mapping_path = './Corpus_Path/key_mapping.json'
+# 简写标签映射序号
+abbrtag_to_index_json_path = './Corpus_Path/Vocal/abbrtag_to_index.json'
+index_to_abbrtag_json_path = './Corpus_Path/Vocal/index_to_abbrtag.json'
+# 中文索引映射
+chinese_to_idx_path = './Corpus_Path/Vocal/chinese_to_idx.json'
+idx_to_chinese_path = './Corpus_Path/Vocal/idx_to_chinese.json'
+# 测试时使用的已经人工标注好的json,算法标注好的每一个词
+test_ner_json_path = './Corpus_Path/2024年03月03日15时01分/101/101.json'
+test_tag_text_path = './Corpus_Path/2024年03月03日15时01分/101/tag.txt'
 
 # 获取json文件信息
 def get_json_info(json_path):
@@ -22,16 +36,101 @@ def get_json_info(json_path):
     :param json_path:
     :return:
     '''
-    logging = get_log_config()
     if os.path.exists(json_path):
         with open(json_path, 'r', encoding='utf-8') as f:
             ner_json = json.load(f)
         print(f"从{json_path}读取成功")
     else:
         ner_json = ""
-        # print(f"json文件不存在{json_path}")
-        logging.error(f"json文件不存在{json_path}")
+        print(f"json文件不存在{json_path}")
+        json_log_config.error(f"json文件不存在{json_path}")
     return ner_json
+
+# 英文全称映射缩写
+key_mapping = get_json_info(key_mapping_path)
+# 所有标签
+all_tag_json = get_json_info(all_tag_json_path)
+# 中文索引映射
+chinese_to_idx_json = get_json_info(chinese_to_idx_path)
+idx_to_chinese_json = get_json_info(idx_to_chinese_path)
+# 测试时使用的已经人工标注好的json
+test_ner_json = get_json_info(test_ner_json_path)
+# 英文标记和简写的映射
+abbrtag_to_index_json = get_json_info(abbrtag_to_index_json_path)
+index_to_abbrtag_json = get_json_info(index_to_abbrtag_json_path)
+
+# 从算法标注好的txt标签中，读取文本并转化为列表形式
+def get_txt_tag(txt_path):
+    '''
+    :param txt_path:
+    :return:list[[]],样例[['蔡', 'B-NM']]
+    '''
+    # 读取txt文件
+    with open(txt_path, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+    # 将文本转化为二维列表
+    data_list = [line.strip().split() for line in lines]
+    return data_list
+# 测试时使用的算法标注好的每一个词
+test_tag_text = get_txt_tag(test_tag_text_path)
+
+# 获取所有的标签简写并返回长度
+def get_abbr_mapping(json_text=all_tag_json, key_mapping=key_mapping, is_idx=False, is_read=False):
+    all_key_abbr = {}
+    index = 0
+    all_key_abbr["<start>"] = index
+    index += 1
+    # print(all_tag_json)
+    if is_read:
+        all_key_abbr = get_json_info(abbrtag_to_index_json_path)
+    else:
+        for key, value in json_text.items():
+            if isinstance(value, str):  # 如果字段值是字符串，则直接添加
+                new_key_B = "B-" + key_mapping[key]
+                all_key_abbr[new_key_B] = index
+                index += 1
+                new_key_I = "I-" + key_mapping[key]
+                all_key_abbr[new_key_I] = index
+                index += 1
+            elif isinstance(value, list):
+                # 遍历二级结构列表
+                for (idx, item) in enumerate(value):
+                    # 遍历字典
+                    for sub_key, sub_value in item.items():
+                        if is_idx:
+                            # 带idx的
+                            new_key = key_mapping[key] + "_" + key_mapping[sub_key] + "_" + str(idx)
+                            new_key_B = "B-" + new_key
+                            new_key_I = "I-" + new_key
+                        else:
+                            # 不带idx的
+                            new_key = key_mapping[key] + "_" + key_mapping[sub_key]
+                            new_key_I = "I-" + new_key
+                            new_key_B = "B-" + new_key
+                        all_key_abbr[new_key_I] = index
+                        index += 1
+                        all_key_abbr[new_key_B] = index
+                        index += 1
+        all_key_abbr['<stop>'] = index
+        index += 1
+        all_key_abbr['O'] = index
+        # with open(abbrtag_to_index_json_path, 'w', encoding='utf-8') as f:
+        #     json.dump(all_key_abbr, f)
+    # print(all_key_abbr)
+    return all_key_abbr
+
+# 更新json同时反写
+def update_json_reverse(json_path,json_info,is_reverse=False,reverse_json_path=""):
+    if len(json_info) == 0:
+        print("json信息为空，请检查变量")
+        return
+    with open(json_path, 'w', encoding='utf-8') as f:
+        json.dump(json_info, f, ensure_ascii=False, indent=4)
+    if is_reverse:
+        reversed_data = {v: k for k, v in json_info.items()}
+        with open(reverse_json_path, 'w', encoding='utf-8') as reverse_file:
+            json.dump(reversed_data, reverse_file, ensure_ascii=False, indent=4)
+    print(f"json成功写入{json_path},反写成功于{reverse_json_path}")
 
 # 若txt路径存在并不为空从路径读取，不存在从pdf_path解析生成text并写入当前txt_path，
 def get_text_from_txt(txt_path,pdf_path=""):
@@ -170,62 +269,6 @@ def create_or_find_date_dir(is_mkdir_date=False, corpus_path=CORPUS_PATH):
 
     return file_dir
 
-# 获取日志配置,返回日志加载器
-def get_log_config(log_path='./Corpus_Path/Log'):
-    """
-    获取日志配置
-    :param log_path: 日志路径
-    :return:
-    """
-    logger = logging.getLogger('my_logger')
-    logger.setLevel(logging.DEBUG)  # 设置最低的日志级别
-
-    if not os.path.exists(log_path):
-        os.makedirs(log_path)
-        print(f"日志路径已生成于{log_path}")
-
-    info_path = os.path.join(log_path, 'Info.log')
-    warning_path = os.path.join(log_path, 'Warning.log')
-    error_path = os.path.join(log_path, 'Error.log')
-
-    # 定义日志格式
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-
-    class InfoFilter(logging.Filter):
-        def filter(self, record):
-            # 只允许INFO级别的日志记录通过过滤器
-            return record.levelno == logging.INFO
-
-    class WarningFilter(logging.Filter):
-        def filter(self, record):
-            # 只允许INFO级别的日志记录通过过滤器
-            return record.levelno == logging.WARNING
-
-    # 检查是否已存在相同配置的INFO级别处理器
-    if not any(handler for handler in logger.handlers if isinstance(handler, logging.FileHandler) and handler.level == logging.INFO):
-        info_handler = logging.FileHandler(info_path, encoding='utf-8')
-        info_handler.setLevel(logging.INFO)
-        info_handler.setFormatter(formatter)
-        info_handler.addFilter(InfoFilter())
-        logger.addHandler(info_handler)
-
-    # 检查是否已存在相同配置的WARNING级别处理器
-    if not any(handler for handler in logger.handlers if isinstance(handler, logging.FileHandler) and handler.level == logging.WARNING):
-        warning_handler = logging.FileHandler(warning_path, encoding='utf-8')
-        warning_handler.setLevel(logging.WARNING)
-        warning_handler.setFormatter(formatter)
-        warning_handler.addFilter(WarningFilter())
-        logger.addHandler(warning_handler)
-
-    # 检查是否已存在相同配置的ERROR级别处理器
-    if not any(handler for handler in logger.handlers if isinstance(handler, logging.FileHandler) and handler.level == logging.ERROR):
-        error_handler = logging.FileHandler(error_path, encoding='utf-8')
-        error_handler.setLevel(logging.ERROR)
-        error_handler.setFormatter(formatter)
-        logger.addHandler(error_handler)
-
-    return logger
-
 # 强制创建文件夹
 def mkdir(url):
     if not os.path.exists(url):
@@ -233,4 +276,5 @@ def mkdir(url):
         print(f"{url}文件夹已创建")
     else:
         print(f"{url}文件夹已存在")
+
 
