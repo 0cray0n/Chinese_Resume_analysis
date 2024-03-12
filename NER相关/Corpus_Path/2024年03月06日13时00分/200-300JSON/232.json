@@ -1,0 +1,51 @@
+{
+    "name": "丁汉臻",
+    "bir": "1991.5.8",
+    "tel": "13244556677",
+    "other": "dinghanzhen@mail.com",
+    "live": "上海",
+    "unv": "上海海事大学",
+    "work_experience": [
+      {
+        "time": "2022.09-至今", 
+        "org": "公司名称", 
+        "work_desc": "项目经理"
+      },
+      {
+        "time": "2021.09-2022.09", 
+        "org": "公司名称", 
+        "work_desc": "项目经理"
+      },
+      {
+        "time": "2020.09-2021.09", 
+        "org": "公司名称", 
+        "work_desc": "项目经理"
+      },
+      {
+        "time": "2018.09-2020.09", 
+        "org": "公司名称", 
+        "work_desc": "工程师"
+      },
+      {
+        "time": "2016.09-2018.09", 
+        "org": "公司名称", 
+        "work_desc": "工程师"
+      }
+    ],
+    "education": [
+      {
+        "time": "2013-2016", 
+        "school": "上海海事大学", 
+        "degree": "硕士", 
+        "edu_desc": "大数据管理与应用"
+      },
+      {
+        "time": "2009-2013", 
+        "school": "上海海事大学", 
+        "degree": "本科", 
+        "edu_desc": ""
+      }
+    ],
+    "skills": "Wordpress, Joomla, Photoshop, Illustrator, Html5"
+  }
+  

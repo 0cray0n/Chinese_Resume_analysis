@@ -1,0 +1,75 @@
+{
+    "name": "张姿好",
+    "bir": "1990.12.06",
+    "gend": "",
+    "tel": "1353445566",
+    "acad": "硕士",
+    "nati": "",
+    "live": "广州市海珠区滨江东路158号",
+    "poli": "",
+    "unv": "南京艺术学院",
+    "work_experience": [
+      {
+        "time": "2015.08至今",
+        "org": "弘艺平面设计工作室",
+        "work_desc": "平面设计师，负责产品UI设计，项目管理，客户沟通，方案撰写等。"
+      }
+    ],
+    "education": [
+      {
+        "time": "2012.09-2015.07",
+        "school": "南京艺术学院",
+        "degree": "硕士",
+        "edu_desc": "平面设计"
+      },
+      {
+        "time": "2008.09-2012.07",
+        "school": "南京艺术学院",
+        "degree": "本科",
+        "edu_desc": "平面设计"
+      }
+    ],
+    "project_experience": [
+      {
+        "time": "2015.08-2020.01",
+        "project": "石市通客户端设计",
+        "role": "",
+        "project_desc": "石市通为广东某公司委托开发的一款类似58同城APP，负责产品UI设计。"
+      }
+    ],
+    "training_experience": [],
+    "awards": [
+      {
+        "time": "2011.05",
+        "award": "“建设品质城，青春齐给力”logo征集活动入围奖"
+      },
+      {
+        "time": "2011.11",
+        "award": "学院优秀学生荣誉称号"
+      },
+      {
+        "time": "2012.07",
+        "award": "“南京青奥会”专题设计竞赛“招贴”三等奖"
+      },
+      {
+        "time": "2012.12",
+        "award": "学院优秀学生荣誉称号"
+      },
+      {
+        "time": "2015.06",
+        "award": "省级优秀毕业生"
+      }
+    ],
+    "self_assessment": "具有一定的设计基础，良好的手绘能力，整体画面感好，有一定的创意和想法，精通Photoshop、CorelDRAW等平面设计软件，略懂3DMAX、FLASH等软件的基本操作。",
+    "career_objective": "平面设计师",
+    "skills": "Photoshop, CorelDRAW, 3DMAX, FLASH, Word, Excel",
+    "interests": "爬山、旅游、骑行、音乐、阅读、摄影",
+    "certifications": "",
+    "language_skills": "",
+    "publications": "",
+    "philosophy": "",
+    "major_courses": "企业形象策划（CIS）、标志设计、图形设计、广告策划与创意设计、互动媒体设计、计算机辅助设计、包装设计、版面设计、书籍装帧、工艺美术品设计和制作",
+    "self_introduction": "",
+    "other": ""
+  }
+  

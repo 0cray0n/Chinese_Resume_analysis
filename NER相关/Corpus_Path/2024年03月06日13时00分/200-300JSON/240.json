@@ -1,0 +1,57 @@
+{
+    "name": "郭佩芳",
+    "bir": "1987.05",
+    "gend": "女",
+    "tel": "13522334567",
+    "acad": "本科",
+    "nati": "汉族",
+    "live": "成都",
+    "poli": "",
+    "unv": "西华大学",
+    "work_experience": [
+      {
+        "time": "2012.09-至今",
+        "org": "成都奈森设计信息科技有限公司",
+        "work_desc": "市场营销，负责公司线上端资源的销售工作，实时了解行业变化，跟踪客户数据，为客户制定投放计划。"
+      },
+      {
+        "time": "2009.09-2012.09",
+        "org": "成都百丁信息科技有限公司",
+        "work_desc": "软件工程师，负责业务系统设计及改进，客户调研、需求分析、方案写作，参与电子商务项目策划。"
+      }
+    ],
+    "education": [
+      {
+        "time": "2005.07-2009.06",
+        "school": "西华大学",
+        "degree": "本科",
+        "edu_desc": "市场营销"
+      }
+    ],
+    "awards": [
+      {
+        "time": "2007年暑假",
+        "award": "社会实践活动优秀团队二等奖"
+      },
+      {
+        "time": "2006年暑假",
+        "award": "社会实践活动优秀调研报告"
+      },
+      {
+        "time": "2005年寒假",
+        "award": "社会实践活动先进个人"
+      }
+    ],
+    "self_assessment": "营销专业背景，系统学习定性与定量研究方法，掌握数据搜集技术，结合SPSS、Excel进行数据处理分析。",
+    "career_objective": "市场运营专员",
+    "skills": "CFA Level1，CPA资格，CFP科目学习，SPSS、Excel数据分析，美国留学工作经验，流利英语和普通话。",
+    "interests": "",
+    "certifications": "CFA Level1，CPA资格，CFP科目学习完成",
+    "language_skills": "英语（流利），普通话（流利）",
+    "publications": "",
+    "philosophy": "",
+    "major_courses": "管理学、微观经济学、宏观经济学、管理信息系统、统计学、财务管理、市场营销、经济法",
+    "self_introduction": "",
+    "other": "邮箱: guopeifang@139.com"
+  }
+  

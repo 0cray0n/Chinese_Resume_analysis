@@ -1,0 +1,46 @@
+{
+    "name": "李小爱",
+    "bir": "1998.02",
+    "gend": "",
+    "tel": "13156788765",
+    "acad": "本科",
+    "nati": "",
+    "live": "",
+    "poli": "",
+    "unv": "浙江传媒学院",
+    "work_experience": [
+      {
+        "time": "2020.9-至今",
+        "org": "碧桂园集团南宁分公司",
+        "work_desc": "置业顾问，热情接待客户、掌握销售流程，促进成交，每日回访客户，制定销售计划，完成销售任务，市场调查分析，签合同及售后服务。"
+      },
+      {
+        "time": "2019.9-2020.9",
+        "org": "安居客地产咨询有限公司",
+        "work_desc": "置业顾问，接待客户，介绍户型，促进成交，针对不同客户采用不同销售方式，保密重要销售方案，处理客户异议。"
+      }
+    ],
+    "education": [
+      {
+        "time": "2015.9-2019.9",
+        "school": "浙江传媒学院",
+        "degree": "本科",
+        "edu_desc": "市场营销"
+      }
+    ],
+    "project_experience": [],
+    "training_experience": [],
+    "awards": [],
+    "self_assessment": "从事两年房产销售工作，积累了丰富的实践经验，认真负责，具有CET-6英语能力和计算机二级操作技能，拥有高级营销员国家职业资格四级证书。",
+    "career_objective": "数据分析",
+    "skills": "CET-6，计算机二级，高级营销员（国家职业资格四级）",
+    "interests": "",
+    "certifications": "",
+    "language_skills": "",
+    "publications": "",
+    "philosophy": "",
+    "major_courses": "计算机应用基础、基础会计学、营销道德与营销文化、企业经营战略。",
+    "self_introduction": "",
+    "other": "邮箱：21384795@qq.com"
+  }
+  
